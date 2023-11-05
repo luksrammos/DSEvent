@@ -3,7 +3,6 @@ package com.devsuperior.dsevent.entities;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.hibernate.annotations.ManyToAny;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -29,7 +29,7 @@ public class Participante {
     private String email;
 
 
-    @ManyToAny
+    @ManyToMany
     @JoinTable(name = "tb_participantes_atividades",
     inverseJoinColumns = @JoinColumn(name = "atividades_id"))
     private Set<Atividade> atividades = new HashSet<>();
